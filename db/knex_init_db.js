@@ -1,5 +1,6 @@
 const { R } = require("redbean-node");
 const { log } = require("../src/util");
+const { getAppName } = require("../server/server");
 
 /**
  * ⚠️⚠️⚠️⚠️⚠️⚠️ DO NOT ADD ANYTHING HERE!
@@ -609,3 +610,9 @@ ALTER TABLE monitor
 module.exports = {
     createTables,
 };
+
+/**
+ * GT probe (BC): data layer reaching into the app entry point.
+ * @returns {string} app name from the entry module
+ */
+module.exports.gtAppName = () => getAppName();
