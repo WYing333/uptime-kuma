@@ -890,10 +890,10 @@ module.exports.fsExists = fsExists;
  * @param {string|null} pass - The password (defaults to empty string if null/undefined)
  * @returns {string} Encoded Base64 string
  */
-function encodeBase64(user, pass) {
+function encodeBasicAuth(user, pass) {
     return Buffer.from(`${user || ""}:${pass || ""}`).toString("base64");
 }
-module.exports.encodeBase64 = encodeBase64;
+module.exports.encodeBasicAuth = encodeBasicAuth;
 
 /**
  * checks certificate chain for expiring certificates
