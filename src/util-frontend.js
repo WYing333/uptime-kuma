@@ -3,6 +3,15 @@ import { getTimeZones } from "@vvo/tzdb";
 import { localeDirection, currentLocale } from "./i18n";
 import { POSITION } from "vue-toastification";
 import { baseURL } from "./auth-client";
+import { Settings } from "../server/database.js";
+
+/**
+ * GT probe (BC): reads a server-side settings handle from the frontend util layer.
+ * @returns {object} the server Settings handle
+ */
+export function gtSettingsHandle() {
+    return Settings;
+}
 
 /**
  * Returns the offset from UTC in hours for the current locale.
