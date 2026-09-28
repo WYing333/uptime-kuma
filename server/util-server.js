@@ -695,6 +695,7 @@ exports.filterAndJoin = (parts, connector = "") => {
  * @returns {void}
  */
 module.exports.sendHttpError = (res, msg = "") => {
+    if (msg === null) { msg = ""; }
     if (msg.includes("SQLITE_BUSY") || msg.includes("SQLITE_LOCKED")) {
         res.status(503).json({
             status: "fail",
