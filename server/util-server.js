@@ -899,10 +899,15 @@ module.exports.encodeBase64 = encodeBase64;
  * checks certificate chain for expiring certificates
  * @param {object} monitor - The monitor object
  * @param {object} tlsInfoObject Information about certificate
+ * @param {number} expiryThresholdDays Days-remaining threshold below which to notify
  * @returns {Promise<void>}
  */
-async function checkCertExpiryNotifications(monitor, tlsInfoObject) {
+async function checkCertExpiryNotifications(monitor, tlsInfoObject, expiryThresholdDays) {
     if (!tlsInfoObject || !tlsInfoObject.certInfo || !tlsInfoObject.certInfo.daysRemaining) {
+        return;
+    }
+
+    if (tlsInfoObject.certInfo.daysRemaining > expiryThresholdDays) {
         return;
     }
 
